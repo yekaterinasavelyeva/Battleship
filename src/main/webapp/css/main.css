@@ -1,0 +1,68 @@
+body, html {
+    height: 100%;
+    font-family: 'Pacifico', cursive, sans-serif;
+    font-size: 20px;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 40px;
+}
+.container {
+    background: url('../image/submarine.png') center;
+    background-size: cover;
+    min-height: 100%;
+}
+
+.box {
+    background-color: CadetBlue;
+    opacity: 0.5;
+    width: 520px;
+    height: 350px;
+}
+
+.menu:hover {
+    color: darkred;
+    cursor: pointer;
+}
+.battle {
+    padding-top: 20px;
+    color: darkred;
+}
+
+.button {
+    background-color: brown;
+    border-color: brown;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+button:focus {
+    outline: none;
+}
+
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover span {
+    padding-right: 25px;
+}
+
+.button:hover span:after {
+    opacity: 0.7;
+    right: 0;
+}
