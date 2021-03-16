@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: katja
@@ -7,10 +8,17 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+    <title>Battleship Registration</title>
+</head>
+<body>
+    <form method="post">
+        <c:if test="${isPlayerNameIncorrect}">
+            <p>Player name is too short</p>
+        </c:if>
+        <label for="playerNameInput">Enter name</label>
+        <input type="text" id="playerNameInput" name="playerName" value="${playerName}">
+        <button type="submit">Start</button>
+    </form>
+</body>
 </html>
