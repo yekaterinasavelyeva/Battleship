@@ -8,6 +8,7 @@ h1 {
     font-weight: bold;
     font-size: 40px;
 }
+
 .container {
     background: url('../image/submarine.png') center;
     background-size: cover;
