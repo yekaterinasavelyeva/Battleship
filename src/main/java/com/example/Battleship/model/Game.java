@@ -19,6 +19,13 @@ public class Game {
         this.status = GameStatus.SETTING_UP;
     }
 
+    public Player opponentOf(Player player) {
+        if (player == player1) {
+            return player2;
+        }
+        return player1;
+    }
+
     public Player getPlayer1() {
         return player1;
     }
