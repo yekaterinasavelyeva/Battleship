@@ -21,8 +21,6 @@ h1 {
 }
 
 .container {
-    background-size: cover;
-    min-height: 100%;
     font-family: 'Pacifico', cursive, sans-serif;
 }
 

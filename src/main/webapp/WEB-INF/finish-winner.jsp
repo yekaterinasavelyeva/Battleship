@@ -9,7 +9,7 @@
 </head>
 <body>
 <img class="image" src="image/submarine.png">
-<div class="winner w3-card-4 w3-display-middle w3-center w3-round-xlarge">
+<div class="container winner w3-card-4 w3-display-middle w3-center w3-round-xlarge">
     <h1>${player.name}, you have won the battle!</h1>
     <form method="POST">
         <button type="submit" href="finish" class="button w3-button w3-xlarge w3-round-xxlarge w3-theme-gradient w3-text-white">Start Over</button>
