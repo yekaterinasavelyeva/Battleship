@@ -22,12 +22,12 @@ img.image {
     left:0;
     top: 0;
     width:100%;
-    height: auto;
+    height: 100%;
     opacity: 0.8;
 }
 
 .card {
-    background-color:rgba(239,224,205,0.7);
+    background-color:rgba(239,224,205,0.5);
 }
 
 

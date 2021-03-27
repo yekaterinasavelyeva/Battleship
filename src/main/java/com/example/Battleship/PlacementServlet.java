@@ -21,9 +21,21 @@ public class PlacementServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         var addresses = request.getParameterValues("addr");
-        System.out.println(Arrays.asList(addresses));
         var player = (Player) request.getSession().getAttribute(Player.ATTR);
+        player.getPlayerField().clear();
+        if(addresses == null) {
+            request.setAttribute("incorrectShipsPlacement", true);
+            openPlacement(request, response);
+            return;
+        }
         player.setShips(Set.of(addresses));
+        if(!player.isPlayerFieldValid()) {
+            request.setAttribute("incorrectShipsPlacement", true);
+            openPlacement(request, response);
+            return;
+        }
+        var game = (Game) request.getSession().getAttribute(Game.ATTR);
+        game.checkGameStart();
         openNext(request, response);
     }
 

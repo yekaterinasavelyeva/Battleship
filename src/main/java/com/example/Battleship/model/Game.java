@@ -6,6 +6,7 @@ public class Game {
     private final Player player1;
     private Player player2;
     private GameStatus status = GameStatus.INCOMPLETE;
+    private boolean player1turn = true;
 
     public Game(Player player1) {
         this.player1 = player1;
@@ -36,5 +37,47 @@ public class Game {
 
     public GameStatus getStatus() {
         return status;
+    }
+
+    public void checkGameStart() {
+        if (player1.isPlayerFieldValid() && player2.isPlayerFieldValid()) {
+            status = GameStatus.IN_PROGRESS;
+        }
+    }
+
+    public Player getCurrentPlayer() {
+       return player1turn ? player1 : player2;
+    }
+
+    public  Player getAwaitPlayer() {
+        return player1turn ? player2 : player1;
+    }
+
+    public void fire(String addr) {
+        var cur = getCurrentPlayer();
+        var await = getAwaitPlayer();
+        var attackCellStatus = await.getPlayerFieldCell(addr);
+        boolean isHit = false;
+        switch (attackCellStatus) {
+            case SHIP:
+                cur.setOpponentViewCell(addr, CellStatus.HIT);
+                await.setPlayerFieldCell(addr, CellStatus.HIT);
+                if (!await.hasMoreShips()) {
+                    status = GameStatus.FINISHED;
+                }
+                isHit = true;
+                break;
+            case EMPTY:
+                cur.setOpponentViewCell(addr, CellStatus.MISS);
+                await.setPlayerFieldCell(addr, CellStatus.MISS);
+                player1turn = !player1turn;
+                break;
+            case HIT:
+            case MISS:
+                player1turn = !player1turn;
+                break;
+        }
+        player1.addHistory(cur, addr, isHit);
+        player2.addHistory(cur, addr, isHit);
     }
 }

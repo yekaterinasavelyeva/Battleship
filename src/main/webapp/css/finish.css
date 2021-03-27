@@ -1,52 +1,7 @@
-table, td {
-    border: 1px solid black;
-    text-align: center;
-    border-collapse: collapse;
-}
-
 body, html {
     height: 100%;
     font-family: 'Pacifico', cursive, sans-serif;
     font-size: 20px;
-}
-
-h1 {
-    font-weight: bold!important;
-    font-size: 40px!important;
-    padding-top: 20px;
-    color: darkred;
-}
-
-.container {
-    min-height: 100%;
-    background-size: cover;
-    font-family: 'Pacifico', cursive, sans-serif;
-}
-
-td {
-    width: 2em;
-    height: 2em;
-}
-
-td.SHIP {
-    background-color: darkblue;
-}
-
-table {
-    margin: auto;
-}
-
-.button {
-    cursor: pointer;
-    margin: 10px;
-}
-
-button:focus {
-    outline: none;
-}
-
-.button:hover {
-    opacity: 0.7;
 }
 
 img.image {
@@ -58,10 +13,29 @@ img.image {
     opacity: 0.8;
 }
 
-.box {
-    background-color: rgba(255, 248, 220, 0.5);
-    width: 30%;
-    height: 70%;
+h1 {
+    font-weight: bold!important;
+    font-size: 40px!important;
+    color:rgba(36, 43, 56, 1);
+    padding: 0 10%;
+}
+
+.container {
+    background-size: cover;
+    min-height: 100%;
+    font-family: 'Pacifico', cursive, sans-serif;
+}
+
+.card {
+    background-color:rgba(239,224,205,0.5);
+}
+
+.winner {
+    background-color:rgba(0,153,76,0.5);
+}
+
+.looser {
+    background-color:rgba(255,51,51,0.5);
 }
 
 .w3-theme-gradient {

@@ -8,7 +8,7 @@ public class GameManager {
     public synchronized Game join(Player player) {
 
         Game result;
-        if (pending ==null) {
+        if (pending == null) {
             pending = new Game(player);
             result = pending;
         } else {

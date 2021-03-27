@@ -14,11 +14,12 @@
 <body>
 <div class="container w3-display-container">
     <img class="image" src="image/submarine.png">
-    <div class="w3-display-middle w3-card">
+    <div class="box w3-display-middle w3-card w3-round-xlarge">
         <div class="w3-container w3-padding-large w3-center">
+            <h1>${player.name}, please set your ships!</h1>
 
             <form method="POST">
-                <table>
+                <table class="w3-center">
                     <tr>
                         <td></td>
                         <c:forEach items="A,B,C,D,E,F,G,H,I,J" var="col">
@@ -39,7 +40,7 @@
                         </tr>
                     </c:forEach>
                 </table>
-                <button class="w3-button w3-red" type="submit">Ready</button>
+                <button class="button w3-button w3-xlarge w3-round-xxlarge w3-theme-gradient w3-text-white" type="submit">Ready</button>
             </form>
         </div>
     </div>
