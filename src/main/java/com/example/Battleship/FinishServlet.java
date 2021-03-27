@@ -23,6 +23,11 @@ public class FinishServlet extends HttpServlet {
     }
 
     private void openNext(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        var game = (Game) request.getSession().getAttribute(Game.ATTR);
+        if (game.getStatus() != GameStatus.FINISHED) {
+            response.sendError(400);
+            return;
+        }
         var player = (Player) request.getSession().getAttribute(Player.ATTR);
         if (player.hasShipsLeft()) {
             openWinner(request, response);
