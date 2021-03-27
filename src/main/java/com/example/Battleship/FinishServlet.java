@@ -33,8 +33,8 @@ public class FinishServlet extends HttpServlet {
 
     private void restartTheGame(HttpServletRequest request, HttpServletResponse response) throws IOException {
         var player = (Player) request.getSession().getAttribute(Player.ATTR);
-        var manager = (GameManager) request.getServletContext().getAttribute(GameManager.ATTR);
         player.reset();
+        var manager = (GameManager) request.getServletContext().getAttribute(GameManager.ATTR);
         var game = manager.join(player);
         request.getSession().setAttribute(Player.ATTR, player);
         request.getSession().setAttribute(Game.ATTR, game);
