@@ -69,14 +69,18 @@ public class Player {
         return playerField.entrySet().stream().anyMatch(entry -> entry.getValue().equals(CellStatus.SHIP));
     }
 
+    public long shipsLeft() {
+        return playerField.entrySet().stream().filter(entry -> entry.getValue().equals(CellStatus.SHIP)).count();
+    }
+
     public List<String> getHistory() {
         return history;
     }
 
     public void reset() {
-        playerField = new HashMap<>();
-        opponentView = new HashMap<>();
-        history = new ArrayList<>();
+        playerField.clear();
+        opponentView.clear();
+        history.clear();
         playerFieldValid = false;
     }
 }

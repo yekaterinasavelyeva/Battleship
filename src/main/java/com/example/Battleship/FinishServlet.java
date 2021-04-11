@@ -1,5 +1,6 @@
 package com.example.Battleship;
 
+import com.example.Battleship.db.DatabaseUtil;
 import com.example.Battleship.model.Game;
 import com.example.Battleship.model.GameManager;
 import com.example.Battleship.model.GameStatus;
@@ -24,12 +25,14 @@ public class FinishServlet extends HttpServlet {
 
     private void openNext(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         var game = (Game) request.getSession().getAttribute(Game.ATTR);
+        var player = (Player) request.getSession().getAttribute(Player.ATTR);
         if (game.getStatus() != GameStatus.FINISHED) {
             response.sendError(400);
             return;
         }
-        var player = (Player) request.getSession().getAttribute(Player.ATTR);
-        if (player.hasShipsLeft()) {
+
+        if (game.isWinner(player)) {
+            DatabaseUtil.saveWinnerResult(player);
             openWinner(request, response);
         } else {
             openLooser(request, response);

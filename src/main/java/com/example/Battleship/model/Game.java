@@ -1,5 +1,8 @@
 package com.example.Battleship.model;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Game {
 
     public static final String ATTR = "game";
@@ -7,6 +10,7 @@ public class Game {
     private Player player2;
     private GameStatus status = GameStatus.INCOMPLETE;
     private boolean player1turn = true;
+    private GameResult result = GameResult.NOT_FINISHED;
 
     public Game(Player player1) {
         this.player1 = player1;
@@ -64,7 +68,9 @@ public class Game {
                 await.setPlayerFieldCell(addr, CellStatus.HIT);
                 if (!await.hasMoreShips()) {
                     status = GameStatus.FINISHED;
+                    this.result = player1turn ? GameResult.PLAYER1_WON : GameResult.PLAYER2_WON;
                 }
+
                 isHit = true;
                 break;
             case EMPTY:
@@ -79,5 +85,20 @@ public class Game {
         }
         player1.addHistory(cur, addr, isHit);
         player2.addHistory(cur, addr, isHit);
+    }
+
+    public boolean isWinner(Player player) {
+        return player == player1
+                ? result == GameResult.PLAYER1_WON || result == GameResult.PLAYER2_SURRENDERED
+                : result == GameResult.PLAYER2_WON || result == GameResult.PLAYER1_SURRENDERED;
+    }
+
+    public List<Player> getPlayers() {
+        return Arrays.asList(player1, player2);
+    }
+
+    void surrender(Player player) {
+        status = GameStatus.FINISHED;
+        result = player == player1 ? GameResult.PLAYER1_SURRENDERED : GameResult.PLAYER2_SURRENDERED;
     }
 }
