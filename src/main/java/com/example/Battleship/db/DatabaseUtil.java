@@ -3,8 +3,6 @@ package com.example.Battleship.db;
 import com.example.Battleship.model.Player;
 import com.example.Battleship.model.Record;
 
-import javax.servlet.ServletException;
-import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
